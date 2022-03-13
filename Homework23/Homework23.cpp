@@ -4,8 +4,8 @@ using namespace std;
 
 void threeMax(int& refA, int& refB, int& refC);
 int& returnFirstNegative(int array[], int length);
-void makeElementsNull(int * array1[], int length1, int * array2[], int length2);
-void showArray(int * pArray[], int length);
+void makeElementsNull(int array1[], int length1, int array2[], int length2);
+void showArray(int pArray[], int length);
 
 int main() {
 	setlocale(LC_ALL, "Russian");
@@ -32,34 +32,35 @@ int main() {
 	int* pArray1 = &array1[0];
 	int* pArray2 = &array2[0];
 	cout << "Массив 1:\n";
-	showArray(&pArray1, 7);
+	showArray(pArray1, 7);
 
 	cout << "\nМассив 2:\n";
-	showArray(&pArray2, 6);
+	showArray(pArray2, 6);
 
-	makeElementsNull(&pArray1, 7, &pArray2, 6);
+	makeElementsNull(pArray1, 7, pArray2, 6);
 
 	cout << "\nМассив 2 после работы функции:\n";
-	showArray(&pArray2, 6);
+	showArray(pArray2, 6);
 
 	return 0;
 }
 
 // Задача 3
 
-void makeElementsNull(int * pArray1[], int length1, int * pArray2[], int length2) {
+void makeElementsNull(int pArray1[], int length1, int  pArray2[], int length2) {
+	int iZero = 0;
 	for (int i = 0; i < length1; i++) {
 		for (int j = 0; j < length2; j++) {
 			if (*(pArray1 + i) == *(pArray2 + j))
-				*(pArray2 + j) = 0;
+				*(pArray2 +j) = iZero;
 		}
 	}
 }
 
-void showArray(int * pArray[], int length) {
+void showArray(int pArray[], int length) {
 	cout << "[";
 	for (int i = 0; i < length; i++)
-		cout << pArray[i] << ", ";
+		cout << *(pArray + i) << ", ";
 	cout << "\b\b]\n";
 }
 
